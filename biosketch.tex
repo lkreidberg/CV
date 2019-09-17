@@ -1,235 +1,91 @@
-% Upper-case    A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
-% Lower-case    a b c d e f g h i j k l m n o p q r s t u v w x y z
-% Digits        0 1 2 3 4 5 6 7 8 9
-% Exclamation   !           Double quote "          Hash (number) #
-% Dollar        $           Percent      %          Ampersand     &
-% Acute accent  '           Left paren   (          Right paren   )
-% Asterisk      *           Plus         +          Comma         ,
-% Minus         -           Point        .          Solidus       /
-% Colon         :           Semicolon    ;          Less than     <
-% Equals        =           Greater than >          Question mark ?
-% At            @           Left bracket [          Backslash     \
-% Right bracket ]           Circumflex   ^          Underscore    _
-% Grave accent  `           Left brace   {          Vertical bar  |
-% Right brace   }           Tilde        ~
-
-%
-% NSF Biographical Sketch: Dr. Theodore P. Pavlic
-%
-% Copyright (c) 2013 by Theodore P. Pavlic
-% All rights reserved.
-%
-
-\documentclass[11pt]{article}
-\usepackage[margin=1in]{geometry}
-\usepackage[T1]{fontenc}
-\usepackage{times}
-\renewcommand\thesection{(\alph{section})}
-\renewcommand\thesubsection{(\alph{subsection})}
-
-\usepackage{calc}
-
-% hanging publications: 1st line starts at beginning of line, 
-% further lines are placed a bit to the right
-\usepackage{hanging}
-
-\usepackage{lastpage}
-%\newcommand{\pageoflastpage}{Page {\thepage} of \pageref*{LastPage}}
-%\newcommand{\pageoflastpage}{{\thepage} of \pageref*{LastPage}}
-\newcommand{\pageoflastpage}{}
-
-% Redefine the plain pagestyle for the title page
-\makeatletter
-\let\oldps@plain\ps@plain
-\renewcommand{\ps@plain}{\oldps@plain%
-\renewcommand{\@evenfoot}{\hfil\pageoflastpage\hfil}%
-\renewcommand{\@oddfoot}{\@evenfoot}}
-\makeatother
-
-% Use fancy for non-title pages
-\usepackage{fancyhdr}
-\fancyhead{}
-\fancyfoot{}
-\cfoot{\pageoflastpage}
-\pagestyle{fancy}
-
-\usepackage{xspace}
-
-\usepackage[shortlabels]{enumitem}
-\usepackage{graphicx}
-\usepackage{varioref}
-\usepackage[%
-        colorlinks=true,urlcolor=,
-        pdfpagelabels=true,hypertexnames=true,
-        plainpages=false,naturalnames=true,
-        ]{hyperref}
-%
+\documentclass[12pt,letterpaper]{article}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{pslatex}
 \usepackage{url}
-\newcommand\doilink[1]{\href{http://dx.doi.org/#1}{#1}}
-\newcommand\doi[1]{doi:\doilink{#1}}
+\usepackage{paralist}
+\usepackage{enumitem}
+%\usepackage{etaremune}
 
-\makeatletter
-\newlength{\bibhang}
-\setlength{\bibhang}{1em}
-\newlength{\bibsep}
- {\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
-\newlist{bibsection}{itemize}{3}
-\setlist[bibsection]{label=,leftmargin={\bibhang+\widthof{[9]}},%
-        itemindent=-\bibhang,
-        itemsep=\bibsep,parsep=\z@,partopsep=0pt,
-        topsep=0pt}
-\newlist{bibenum}{enumerate}{3}
-\setlist[bibenum]{label=\textbf{\arabic*.},leftmargin={\bibhang+\widthof{[999]}},%
-        itemindent=-\bibhang,
-        itemsep=\bibsep,parsep=\z@,partopsep=0pt,
-        topsep=0pt}
-\let\oldendbibenum\endbibenum
-\def\endbibenum{\oldendbibenum\vspace{-.6\baselineskip}}
-\let\oldendbibsection\endbibsection
-\def\endbibsection{\oldendbibsection\vspace{-.6\baselineskip}}
-\makeatother
+% Set your name here
+\def\name{Laura R. Kreidberg}
 
-\title{%
-        \vspace{-2\baselineskip}
-            \normalsize
-            Biographical Sketch\\
-            {\large\textbf{Dr.~Laura~Kreidberg}}\\
-            \vspace{0.5\baselineskip}
-            \hrule
-            \vspace{0.5\baselineskip}
-            Center for Astrophysics | Harvard and Smithsonian\\
-            e-mail: \href{mailto:laura.kreidberg@cfa.harvard.edu}{laura.kreidberg@cfa.harvard.edu},
-            tel: +1-775-233-7497
-        \vspace{-1.5ex}
-        }
-\date{}
-\author{}
+\geometry{
+  body={6.5in, 9.5in},
+  left=1.0in,
+  top=1.0in,
+  bottom = 1.0in
+}
 
-%\hypersetup{%
-%        pdfsubject={NSF Biographical Sketch of Dr.~Theodore P.~Pavlic},
-%        pdfauthor={Dr. Theodore P.~Pavlic},
-%        pdftitle={NSF Biographical Sketch of Dr.~Theodore P.~Pavlic},
-%        pdfkeywords={}
-%        }
+% Customize page headers
+\pagestyle{myheadings}
+\markright{\name}
+\thispagestyle{empty}
 
-\newcommand{\ie}{i.e.\xspace}
-\newcommand{\eg}{e.g.\xspace}
+% Don't indent paragraphs.
+\setlength\parindent{0em}
+
+\renewenvironment{itemize}{
+	\begin{list}{}{
+	\setlength{\leftmargin}{1mm}%
+	\setlength{\itemsep}{0pt}%
+	\setlength{\parskip}{0pt}
+	}
+}{
+	\end{list}
+}
 
 \begin{document}
+\sloppy
 
-\maketitle
-\vspace{-4\baselineskip}
+% Place name at left
+% Alternatively, print name centered and bold:
+%\centerline{\huge \bf \name}
 
-\subsection{Professional Preparation}
+\begin{tabular}{@{}p{4.0in}@{}p{5.0in}}
+    \LARGE{Laura Kreidberg}                  & E-mail: laura.kreidberg@cfa.harvard.edu\\  
+    \,                                       & http://www.cfa.harvard.edu/$\sim$lkreidberg \\ 
+    \large{Curriculum vitae} (September 2019) & \, \\
+\end{tabular}
+\vspace{8mm}
 
-\begin{itemize}
-\item University of Chicago, Chicago, IL;
- Ph.D. 2016, Dept. of Astronomy and Astrophysics
+\textbf{\textsc{Appointments}}\\
+Assistant Professor, Leiden Observatory \hfill beginning 2020\\
+Clay Fellow, Harvard-Smithsonian Center for Astrophysics \hfill 2019 - 2020\\
+Junior Fellow, Society of Fellows, Harvard University \hfill 2016 - 2019\\
+ITC Fellow, Harvard University \hfill 2016 - 2019\\
 
-\item Yale College, New Haven, CT;
- B.S. 2011, with distinction in Astronomy and Physics
+\textbf{\textsc{Education}}\\
+University of Chicago, Ph.D. Astronomy and Astrophysics \hfill 2016\\
+Yale University, B.S. Physics and Astronomy, with distinction \hfill 2011\\
 
-\end{itemize}
-
-\subsection{Positions Held}
-
-\begin{itemize}[label={\quad 9999--9999:},leftmargin=*,itemsep=0pt]
-    \item [2020-]{Assistant Professor}, Leiden Observatory
-\item[2019-2020]{Clay Fellow}, Center for Astrophysics | Harvard and Smithsonian 
-\item[2016-2019]{Junior Fellow}, Harvard Society of Fellows
-
-\end{itemize}
-
-\subsection{Honors}
-
-\begin{itemize}[itemsep=0pt]
-
+\textbf{\textsc{Fellowships and Awards}}
+\begin{compactitem}[]
 \item Paul Hertelendy (pH) Lecturer, Harvard-Smithsonian Center for Astrophysics \hfill 2018 
 \item International Astronomical Union Division F PhD Prize \hfill 2017
+\item Hubble and Sagan Postdoctoral Fellowships (both declined) \hfill 2016
+\item Rodger Doxsey Travel Prize, American Astronomical Society \hfill 2016
 \item William Rainey Harper Dissertation Fellowship, University of Chicago \hfill 2015
 \item Peter B. Wagner Memorial Award for Women in Atmospheric Sciences \hfill 2015
+\item Plotnick Fellowship, University of Chicago Physical Sciences Division \hfill 2015
+\item National Science Foundation Graduate Research Fellowship \hfill 2013 - 2016
+\item Illinois Space Grant Fellowship \hfill 2012
 \item George Beckwith Prize for excellence in astronomy, Yale Astronomy Department \hfill2011
+\end{compactitem}
+\vspace{6mm}
 
-\end{itemize}
+\textbf{\textsc{Collaboration Leadership Roles}}
+\begin{compactitem}[]
+\item PI of 10 observing programs on the \emph{Hubble} and \emph{Spitzer} Space Telescopes
+\item Target selection lead; \emph{TESS} Atmosphere Characterization Working Group 
+\item Phase curve working group co-lead; \emph{ARIEL} Mission 
+\item MIRI working group chair; \emph{JWST} Transiting Exoplanet Community ERS Program
+\end{compactitem}
 
+\vspace{7mm}
 
-
-\subsection{Synergistic Activities}
-
-\begin{bibenum}[itemsep=4pt]
-
-\item Scientific Advisory Board, Bolin Center for Climate Research, Stockholm
-\item Science and Security Board, {\it Bulletin of the Atomic Scientists}
-\item Editorial board, {\it Annual Reviews of Earth and Planetary Science} 2012-2017
-\item Lead organizer {\it UK Exoplanets Community Meeting 2018}, Oxford
-\item Lead organizer {\it Exoclimes 2019}, Oxford; Co-organizer {\it Exoclimes 2012}, Aspen, CO, {\it Exoclimes 2014}, Davos, CH
-      and {\it Exoclimes 2016}, Vancouver, BC.
-\item Co-organizer, 2017 Les Houches School on diversity of planetary circulation regimes, in our solar system and beyond 
-\item Co-author National Research Council Report on Climate Intervention
-\item Co-author National Research Council Report on Climate Stabilization Targets
-\item Member, National Research Council Board on Atmospheric Science and Climate, 
-       2009-2014
-\item Member, City of Chicago Mayor's Task Force on Climate Change, 2007-2008 
-\item Co-organizer, 2008 Kavli Institute of Theoretical Physics Program on Physics
-  of Climate.
-\item Lead Author, Intergovernmental Panel on Climate Change (IPCC) 
-Third Assessment Report (1997-2001)
-\item Member, National Research Council Panel on Abrupt Climate Change and its Societal Impacts
-(2000-2001).
-
-
-\end{bibenum}
-
-\subsection{Collaborations}
-
-\begin{bibsection}
-
-    \item \textbf{PhD Thesis Advisor:} Prof. Sheila E. Widnall
-    \item \textbf{Postdoctoral advisor:} None
-    \item \textbf{PhD Students Advised (past 5 years):} 
-         \begin{itemize}
-	\item{Dawei Li} (U. of C. Geophysical Sciences PhD 2015)
-	            Sea glaciers and neoproterozoic climate
-	            
-	\item{Feng Ding} (U. of C. Geophysical Sciences PhD 2017)
-	            GCM modeling of exoplanet climates
-	            
-	\item{Andrew Malone} (co-supervised) (U. of C. Geophysical Sciences PhD 2017)
-	            Mountain glaciers as climate proxies
-
-     \item{Jonah Bloch-Johnson} (co-supervised) (U. of C. Geophysical Sciences PhD 2018)
-                 Bifurcations and climate sensitivity
-
-     \item{Mark Hammond} (Oxford DPhil, expected Nov. 2019) 
-                 Atmospheric dynamics of tide-locked exoplanets
- 
-     \item{Claudia Jones} (Oxford DPhil, in progress) 
-                 Climate of the Devonian: implications for
-                   evolution of tetrapods
-
-     \item{RJ Graham} (Oxford DPhil, in progress) 
-                 Climate of Lava Planets
-
-     \item{Ryan Boukrouche} (Oxford DPhil, in progress) 
-                 Modeling the runaway greenhouse
-
-	 \item{Sarah Blumenthal, Hamish Innes, Namrah Habib} (Oxford DPhil, arriving Oct. 2019) \\
-            Subject Area: Exoplanet climate
-         \end{itemize}
-    \item \textbf{Postdocs mentored:} {Huijun Yang}, { Keith Ngan}, {Chris Poulsen}, {Gilles DeLaygue}, {Jason Goodman},{  Rodrigo Caballero}, {Johnny Lin}
-  , {Christian Dieterich}, {Yannick Donnadieu}, {Helene Brogniez}, {Dargan Frierson}, {David McInerney},
-  {Dorian Abbot} (Chamberlin Fellow), {Jung-Eun Lee}, {Robin Wordsworth}, {Graham Lee}, {John Lynch}, {Tim Lichtenberg} (Simons Collaboration Fellow), {Shami Tsai}, {Maxence LeFevre}, {Xianyu Tan}, {Sarah Rugheimer} (Glasstone Fellow)
-    \item \textbf{Other collaborators:} Eric Gaidos, Peter U. Clark, Susan Solomon, Isaac Held, Francois Forget, Remy Roca, David Archer, Myles Allen, Yongyyn Hu, Marcia McNutt, Richard Alley, David Battisti,Tom Stocker,
-   Andrew Mackintosh, Rodrigo Caballero, Gidon Eshel, Aiko Voigt, Aomawa Shields, Victoria Meadows, 
-   Jonathan Mitchell, Gilles Ramstein, David Rowley
-
-
-
-\end{bibsection}
-
-\subsection{Publications}
-
-\begin{enumerate}
+\textbf{\textsc{Select Publications}} 
+\begin{compactenum}
 \item ``Absence of a thick atmosphere on the terrestrial exoplanet LHS 3844b"\\ 
 Kreidberg, Koll, Morley, Hu, et al., \textit{Nature} in press
 
@@ -262,6 +118,71 @@ Kreidberg, Bean, D\'esert, et al. 2014, \textit{ApJL}, 793, 27
 \item ``Clouds in the Atmosphere of the Super-Earth Exoplanet GJ 1214b"\\
 Kreidberg, Bean, D\'esert, et al. 2014, \textit{Nature}, 505, 69
 
-\end{enumerate}
+\end{compactenum}
+
+
+
+\vspace{5mm}
+\textbf{\textsc{Select Invited Talks}} 
+\begin{compactitem}[]
+\item {Munich Joint Astronomy Colloquium \hfill 05/2019}
+\item {Lecture for the Radcliffe Institute Symposium ``The Undiscovered" \hfill 10/2018}
+\item {K\"{a}ll\'{e}n Symposium, Lund Observatory, Sweden \hfill 05/2018}
+\item {Astronomy Colloquium, Yale University \hfill 04/2018}
+\item{Astronomy Colloquium, Harvard University \hfill 03/2018}
+\item {Koenigstuhl Colloquium, Max Planck Institute for Astronomy \hfill 12/2017}
+\item {Review Talk, Transiting Exoplanets Conference, Keele, UK \hfill 07/2017}
+\end{compactitem}
+
+
+
+\vspace{3mm}
+\textbf{\textsc{Service}} 
+\begin{compactitem}[]
+%\item Student Representative to Physical Science Division disciplinary hearing \hfill 2015
+%\item Chair, MIRI Working Group, JWST ERS proposal \hfill 2017
+% AAS Chambliss Judge, session chair
+\item {Science Organizing Committee member, Exoplanets III \hfill 2018 - present}
+\item {HST-TESS Advisory Committee member \hfill 2019}
+
+\item {Reviewer for ERC Consolidator Grants (2019), HST Cycle 27,  HST Mid-Cycle Proposals (2017-2019), Spitzer Cycle 14, NASA XRP program (2016)}
+\item Referee for ApJ, AJ, ApJL, MNRAS, Nature, Nature Astronomy \hfill 2015 - present
+\end{compactitem}
+
+
+\vspace{7mm}
+\textbf{\textsc{Advising and Mentoring}} 
+\begin{compactitem}[]
+\item Students advised  (*** denotes primary thesis advisor)
+	\begin{compactitem}
+        \item Sebastian Zieba***, graduate student at Leiden \hfill beginning 2020
+		\begin{sloppypar}
+		Taking the Temperature of a Lava Planet: A Phase Curve of K2-141b
+		\end{sloppypar}
+        \item Hannah Diamond-Lowe, graduate student at Harvard \hfill 2018 - present
+		\begin{sloppypar}
+		Planet Atmospheres in Rocky-to-Gaseous Transition: a K2-3 Case Study
+		\end{sloppypar}
+	\item Tom Louden, graduate student at Kavli Program in Astrophysics \hfill 2016 - 2018
+		\begin{sloppypar}
+		SPIDERMAN: a fast code to map the surfaces of exoplanets
+		\end{sloppypar}
+	\item George McDonald, graduate student at Kavli Program in Astrophysics \hfill 2016-2018
+		\begin{sloppypar}
+                 The sub-Neptune desert and its dependence on stellar type	
+		\end{sloppypar}
+	\item Lily Zhao, U. Chicago undergraduate \hfill 2015 - 2016
+		\begin{sloppypar}
+		HST/STIS transmission spectroscopy for the hot Jupiter WASP-12b
+		\end{sloppypar}
+	\end{compactitem}
+%\hspace*{5 mm} Tom Louden, graduate student at Kavli Program on exoplanet atmospheres \hfill 2016\\
+%\hspace*{5 mm} George McDonald, graduate student at Kavli Program on exoplanet atmospheres \hfill 2016\\
+%\hspace*{5 mm} Lily Zhao, U. Chicago undergraduate \hfill 2015 - 2016\\
+\item Mentor, U. Chicago MGC Mentoring Program \hfill 2014-2016 
+\item Mentor, U. Chicago Women in Physics and Astronomy \hfill2014-2015
+\end{compactitem}
+
+
 
 \end{document}
