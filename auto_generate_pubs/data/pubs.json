@@ -3034,31 +3034,6 @@
     "year": "2020"
   },
   {
-    "arxiv": null,
-    "authors": [
-      "Ettou, Sandrine",
-      "Jung, Youngsook L.",
-      "Miyoshi, Tomoya",
-      "Jain, Dhawal",
-      "Hiratsuka, Ken",
-      "Schumacher, Valerie",
-      "Taglienti, Mary E.",
-      "Morizane, Ryuji",
-      "Park, Peter J.",
-      "Kreidberg, Jordan A."
-    ],
-    "citations": 1,
-    "doctype": "article",
-    "doi": "10.1126/sciadv.abb5460",
-    "page": null,
-    "pub": "Science Advances",
-    "pubdate": "2020-07-00",
-    "title": "Epigenetic transcriptional reprogramming by WT1 mediates a repair response during podocyte injury",
-    "url": "https://ui.adsabs.harvard.edu/abs/2020SciA....6.5460E",
-    "volume": "6",
-    "year": "2020"
-  },
-  {
     "arxiv": "2007.08665",
     "authors": [
       "Unterborn, Cayman T.",
@@ -7699,58 +7674,6 @@
   {
     "arxiv": null,
     "authors": [
-      "Tomita, Mayumi",
-      "Asada, Misako",
-      "Asada, Nariaki",
-      "Nakamura, Jin",
-      "Oguchi, Akiko",
-      "Higashi, Atsuko Y.",
-      "Endo, Shuichiro",
-      "Robertson, Elizabeth",
-      "Kimura, Takeshi",
-      "Kita, Toru",
-      "Economides, Aris N.",
-      "Kreidberg, Jordan",
-      "Yanagita, Motoko"
-    ],
-    "citations": 0,
-    "doctype": "article",
-    "doi": "10.1371/journal.pone.0073554",
-    "page": null,
-    "pub": "PLoS ONE",
-    "pubdate": "2013-08-00",
-    "title": "Bmp7 Maintains Undifferentiated Kidney Progenitor Population and Determines Nephron Numbers at Birth",
-    "url": "https://ui.adsabs.harvard.edu/abs/2013PLoSO...873554T",
-    "volume": "8",
-    "year": "2013"
-  },
-  {
-    "arxiv": null,
-    "authors": [
-      "Jeong, Sung-Jin",
-      "Luo, Rong",
-      "Singer, Kathleen",
-      "Giera, Stefanie",
-      "Kreidberg, Jordan",
-      "Kiyozumi, Daiji",
-      "Shimono, Chisei",
-      "Sekiguchi, Kiyotoshi",
-      "Piao, Xianhua"
-    ],
-    "citations": 2,
-    "doctype": "article",
-    "doi": "10.1371/journal.pone.0068781",
-    "page": null,
-    "pub": "PLoS ONE",
-    "pubdate": "2013-07-00",
-    "title": "GPR56 Functions Together with {\\ensuremath{\\alpha}}3{\\ensuremath{\\beta}}1 Integrin in Regulating Cerebral Cortical Development",
-    "url": "https://ui.adsabs.harvard.edu/abs/2013PLoSO...868781J",
-    "volume": "8",
-    "year": "2013"
-  },
-  {
-    "arxiv": null,
-    "authors": [
       "Kreidberg, Laura",
       "Bean, J.",
       "D{\\'e}sert, J.",
@@ -7905,55 +7828,5 @@
     "url": "https://ui.adsabs.harvard.edu/abs/2010AAS...21541611K",
     "volume": "215",
     "year": "2010"
-  },
-  {
-    "arxiv": null,
-    "authors": [
-      "Stanco, Amelia",
-      "Szekeres, Charles",
-      "Patel, Nikhil",
-      "Rao, Sarada",
-      "Campbell, Kenneth",
-      "Kreidberg, Jordan A.",
-      "Polleux, Franck",
-      "Anton, E. S."
-    ],
-    "citations": 3,
-    "doctype": "article",
-    "doi": "10.1073/pnas.0811343106",
-    "page": 7595,
-    "pub": "Proceedings of the National Academy of Science",
-    "pubdate": "2009-05-00",
-    "title": "Netrin-1-{\\ensuremath{\\alpha}}3{\\ensuremath{\\beta}}1 integrin interactions regulate the migration of interneurons through the cortical marginal zone",
-    "url": "https://ui.adsabs.harvard.edu/abs/2009PNAS..106.7595S",
-    "volume": "106",
-    "year": "2009"
-  },
-  {
-    "arxiv": null,
-    "authors": [
-      "Birk, Ohad S.",
-      "Casiano, Delane E.",
-      "Wassif, Christopher A.",
-      "Cogliati, Tiziana",
-      "Zhao, Liping",
-      "Zhao, Yangu",
-      "Grinberg, Alexander",
-      "Huang, Singping",
-      "Kreidberg, Jordan A.",
-      "Parker, Keith L.",
-      "Porter, Forbes D.",
-      "Westphal, Heiner"
-    ],
-    "citations": 5,
-    "doctype": "article",
-    "doi": "10.1038/35002622",
-    "page": 909,
-    "pub": "Nature",
-    "pubdate": "2000-02-00",
-    "title": "The LIM homeobox gene Lhx9 is essential for mouse gonad formation",
-    "url": "https://ui.adsabs.harvard.edu/abs/2000Natur.403..909B",
-    "volume": "403",
-    "year": "2000"
   }
 ]

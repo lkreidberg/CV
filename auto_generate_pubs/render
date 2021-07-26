@@ -1,0 +1,151 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import os
+import json
+import importlib.util
+from datetime import date
+from operator import itemgetter
+
+here = os.path.dirname(os.path.abspath(__file__))
+spec = importlib.util.spec_from_file_location(
+    "utf8totex", os.path.join(here, "utf8totex.py")
+)
+utf8totex = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(utf8totex)
+
+JOURNAL_MAP = {
+    "ArXiv e-prints": "ArXiv",
+    "Monthly Notices of the Royal Astronomical Society": "\\mnras",
+    "The Astrophysical Journal": "\\apj",
+    "The Astronomical Journal": "\\aj",
+    "Publications of the Astronomical Society of the Pacific": "\\pasp",
+    "IAU General Assembly": "IAU",
+    "American Astronomical Society Meeting Abstracts": "AAS",
+}
+
+
+def format_pub(args):
+    ind, pub = args
+    fmt = "\\item[{{\\color{{numcolor}}\\scriptsize{0}}}] ".format(ind)
+    n = [
+        i
+        for i in range(len(pub["authors"]))
+        if "Kreidberg, L" in pub["authors"][i]
+    ][0]
+    pub["authors"][n] = "\\textbf{Kreidberg, Laura}"
+    if len(pub["authors"]) > 5:
+        fmt += "; ".join(pub["authors"][:4])
+        fmt += "; \\etal"
+        if n >= 4:
+            fmt += "\\ (incl.\\ \\textbf{LK})"
+    elif len(pub["authors"]) > 1:
+        fmt += "; ".join(pub["authors"][:-1])
+        fmt += "; \\& " + pub["authors"][-1]
+    else:
+        fmt += pub["authors"][0]
+
+    fmt += ", {0}".format(pub["year"])
+
+    if pub["doi"] is not None:
+        fmt += ", \\doi{{{0}}}{{{1}}}".format(pub["doi"], pub["title"])
+    else:
+        fmt += ", " + pub["title"]
+
+    if not pub["pub"] in [None, "ArXiv e-prints"]:
+        fmt += ", " + JOURNAL_MAP.get(
+            pub["pub"].strip("0123456789# "), pub["pub"]
+        )
+
+    if pub["volume"] is not None:
+        fmt += ", \\textbf{{{0}}}".format(pub["volume"])
+
+    if pub["page"] is not None:
+        fmt += ", {0}".format(pub["page"])
+
+    if pub["arxiv"] is not None:
+        fmt += " (\\arxiv{{{0}}})".format(pub["arxiv"])
+
+    if pub["citations"] > 1:
+        fmt += " [\\href{{{0}}}{{{1} citations}}]".format(
+            pub["url"], pub["citations"]
+        )
+
+    return fmt
+
+
+
+
+if __name__ == "__main__":
+    with open("data/pubs.json", "r") as f:
+        pubs = json.load(f)
+    #pubs = sorted(pubs + other_pubs, key=itemgetter("pubdate"), reverse=True)
+    pubs = sorted(pubs, key=itemgetter("pubdate"), reverse=True)
+    pubs = [
+        p
+        for p in pubs
+        if (
+            p["doctype"] in ["article", "eprint"]
+            and p["pub"] != "Zenodo Software Release"
+        )
+    ]
+
+
+
+    #corrects a few misclassified articles
+    for p in pubs:
+        if p["arxiv"] == "1905.07064": p["doctype"] = "eprint"
+        if p["arxiv"] == "1903.10669": p["doctype"] = "eprint"
+        if p["arxiv"] == "1903.06152": p["doctype"] = "eprint"
+
+    #unrefereed pubs
+    unref = [p for p in pubs if p["doctype"] == "eprint"]
+
+
+    #articles
+    articles = [p for p in pubs if p["doctype"] == "article"]
+
+    #first author articles
+    first = [p for p in articles if "Kreidberg" in p["authors"][0]]
+
+    #multiauthor papers
+    multiauthor = [p for p in articles if len(p["authors"]) > 1]
+    
+    #second author papers
+    second = [p for p in multiauthor if "Kreidberg" in p["authors"][1]]
+
+    #first and second author papers
+    firstsecond = first + second
+    firstsecond = sorted(firstsecond, key=itemgetter("pubdate"), reverse=True)
+
+    #nth author articles
+    nth = [p for p in multiauthor if p not in firstsecond]
+    
+
+
+    # Compute citation stats
+    npapers = len(firstsecond + nth)
+    nfirst = sum(1 for p in pubs if "Kreidberg" in p["authors"][0])
+    cites = sorted((p["citations"] for p in pubs), reverse=True)
+    ncitations = sum(cites)
+    hindex = sum(c >= i for i, c in enumerate(cites))
+
+    summary = (
+        "refereed: {1} / first author: {2} / citations: {3} / "
+        "h-index: {4} ({0})"
+    ).format(date.today(), npapers, nfirst, ncitations, hindex)
+    with open("tex/pubs_summary.tex", "w") as f:
+        f.write(summary)
+
+    nth = list(map(format_pub, zip(range(len(nth), 0, -1), nth)))
+    unref = list(map(format_pub, zip(range(len(unref), 0, -1), unref)))
+    firstsecond = list(map(format_pub, zip(range(len(firstsecond), 0, -1), firstsecond)))
+    with open("tex/pubs_nth.tex", "w") as f:
+        f.write("\n\n".join(nth))
+    with open("tex/pubs_unref.tex", "w") as f:
+        f.write("\n\n".join(unref))
+    with open("tex/pubs_firstsecond.tex", "w") as f:
+        f.write("\n\n".join(firstsecond))
+
+
+
